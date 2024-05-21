@@ -9,6 +9,26 @@ const router = createRouter({
       name: 'home',
       component: Home
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: import('@/views/Login/index.vue')
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: import('@/views/Cart/index.vue')
+    },
+    {
+      path: '/cow',
+      name: 'cow',
+      component: import('@/views/Cow/index.vue')
+    },
+    {
+      path: '/product',
+      name: 'product',
+      component: import('@/views/Product/index.vue')
+    },
   ]
 })
 
