@@ -1,8 +1,13 @@
 <script>
-import NiuLayout from '@/components/NiuLayout.vue';
+import NiuLayout from '@/components/NiuLayout.vue'
+export default {
+  components: {
+    NiuLayout,
+  },
+};
 </script>
 <template>
-<div class="wrap">
+<niu-layout>
 <div class="cart">
 <h1> ①付款與取貨方式</h1>
   <div class="pay">
@@ -28,29 +33,32 @@ import NiuLayout from '@/components/NiuLayout.vue';
       <button class="button">確認</button>
     </form>
   </div>
-</div>
+</niu-layout>
 </template>
 <style scoped>
 
+h1 {
+  padding: 20px 20px;
+}
 .cart {
-  width: 100%;
+  width: 60%;
+  height: 720px;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 24px;
-  padding: 50px;
 }
 
 .pay  {
   font-size: 24px;
-  border: solid black;
+  border: solid 1px black;
   width: 80%;
   height: 160px;
   padding: 20px;
 }
 
 .content-detail {
-  border: solid black;
+  border: solid 1px black;
   height: 200px;
   width: 80%;
   display: flex;
@@ -59,7 +67,7 @@ import NiuLayout from '@/components/NiuLayout.vue';
 
 .order {
   font-size: 20px;
-  width: 60%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }

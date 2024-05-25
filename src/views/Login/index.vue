@@ -15,13 +15,10 @@ import NiuLayout from '@/components/NiuLayout.vue'
 </template>
 
 <style scoped>
-.wrapper{
-  min-height: 100%; 
-  margin-bottom: -50px;
-}
+
 .main-inform {
   width: 500px;
-  height: 680px;
+  height: 720px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,8 +57,7 @@ h2 {
 
 .button-number{
   width: 200px;
-  height: 30px;
-  border: solid 1px black;
+  height: 48px;
   border-radius: 20px;
   font-size: 20px;
   background-color: #333333;

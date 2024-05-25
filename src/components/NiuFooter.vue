@@ -27,15 +27,16 @@ import footerImg from '@/assets/image/002.png';
 </script>
 
 <style >
-  .footer{
+  .footer {
   font-size: 20px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   color: #333333;
   background-color: #EED3D9;
+  flex-shrink: 0;
 }
-.footer-logo{
+.footer-logo {
   width: 400px;
 }
 </style>
