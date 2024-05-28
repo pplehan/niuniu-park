@@ -1,16 +1,21 @@
 <template>
 <div class="header">
-  <div class="title">
+  <div class="title cursor-pointer" @click="changePage('/')">
     <img class="title-logo" :src="headerImg" alt="logo">
     <h1 class="text-3xl font-bold ">niuniu-park</h1>
   </div>
   <ul class="menu">
-    <li><a href="">認識牧場牛</a></li>
-    <li><a href="">產品介紹</a></li>
-    <form class="form-search" action="url" method="get|post" name="search">
-    <input class="input-search" type="text" > 
-    <button><i class="fa-solid fa-magnifying-glass"></i></button>
-    </form>
+    <li class="cursor-pointer" @click="changePage('/KnowCows')">認識牧場牛</li>
+    <li class="cursor-pointer" @click="changePage('/KnowProducts')">產品介紹</li>
+     <a-input-search
+      v-model:value="value"
+      placeholder="input search text"
+      enter-button
+      @search="onSearch" class="size-1/3" 
+    />
+ <a href="" class="icon-user">
+  <i class="fa-solid fa-user"></i>
+ </a>
     <a href="" class="icon-shop">
     <i class="fa-solid fa-cart-shopping"></i>
     </a>
@@ -22,6 +27,12 @@
 
 <script setup>
 import headerImg from '@/assets/image/001.png';
+import {useRouter} from 'vue-router'
+
+const router = useRouter()
+const changePage = (page) => {
+  router.push(page)
+}
 </script>
 
 <style scoped>
@@ -46,7 +57,7 @@ import headerImg from '@/assets/image/001.png';
 }
 
 .menu{
-  width: 800px;
+  width: 60%;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -55,8 +66,7 @@ import headerImg from '@/assets/image/001.png';
   margin-right: 20px;
 }
 
-.form-search{
-  width: 300px;
+/* .form-search{
   border-radius: 100px;
   height: 50px;
   border: solid 1px black;
@@ -69,9 +79,8 @@ import headerImg from '@/assets/image/001.png';
 
 .input-search {
   border-radius: 100px;
-  width: 250px;
   outline: none;
-}
+} */
 i {
   font-size: 25px;
   color: #CC0000;

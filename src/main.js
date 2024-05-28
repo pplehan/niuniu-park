@@ -4,7 +4,7 @@ import 'ant-design-vue/dist/reset.css';
 import './style.scss'
 import App from './App.vue'
 import router from './router'
+import '@/mock/mockServer'
 const app = createApp(App)
 app.use(Antd).use(router).mount('#app')
-
 

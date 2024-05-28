@@ -1,14 +1,11 @@
-<script>
+<script setup>
 import NiuLayout from '@/components/NiuLayout.vue'
-export default {
-  components: {
-    NiuLayout,
-  },
-};
+
 </script>
 <template>
 <niu-layout>
-<div class="cow">
+<div class="my-5 flex flex-col">
+  <img src="https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-35688-i.jpg" alt="">
   <div class="image-col-4"></div>
   <div class="cow-content">
     <h3 class="cow-name">臺灣黃牛(Taiwan Yellow Cattle)</h3>
@@ -25,20 +22,8 @@ export default {
 </template>
 <style scoped>
 
-.cow {
-  width: 90%;
-  margin-left: 5%;
-  height: 720px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
   .cow-content {
   width: 800px;
-  margin-left: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   font-size: 24px;
   }
 .cow-name {
@@ -52,16 +37,8 @@ span {
   color: rgb(124, 49, 49);
 }
 .image-col-4 {
-  margin: 40px 40px;
-  width: 500px;
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-.image-col-4 {
-  
-  background-image: url('https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-35688-i.jpg');
-}
-
 
 </style>

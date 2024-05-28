@@ -5,11 +5,20 @@ import NiuLayout from '@/components/NiuLayout.vue'
   <niu-layout>
     <div class="main-inform">
       <h2>註冊 / 登入</h2>
-    <span class="main-number">請輸入手機號碼</span>
-    <form class="form-number">
-      <input class="input-number" type="text">
-    </form>
-    <button class="button-number">傳送認證碼</button>
+    <span>請輸入手機號碼</span>
+    <a-input v-model:value="userName" placeholder="PhoneNumber">
+      <template #prefix>
+        <user-outlined />
+      </template>
+      <template #suffix>
+        <a-tooltip title="Extra information">
+          <info-circle-outlined style="color: rgba(0, 0, 0, 0.45)" />
+        </a-tooltip>
+      </template>
+    </a-input>
+<a-space wrap>
+    <a-button type="primary">傳送認證碼</a-button>
+  </a-space>
     </div>
   </niu-layout>
 </template>

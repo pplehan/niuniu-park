@@ -1,10 +1,5 @@
-<script>
+<script setup>
 import NiuLayout from '@/components/NiuLayout.vue'
-export default {
-  components: {
-    NiuLayout,
-  },
-};
 </script>
 <template>
 <niu-layout>
@@ -12,6 +7,16 @@ export default {
 <h1> ①付款與取貨方式</h1>
   <div class="pay">
     <ul>
+
+       <a-radio-group v-model:value="value">
+    <a-radio :style="radioStyle" :value="1">Option A</a-radio>
+    <a-radio :style="radioStyle" :value="2">Option B</a-radio>
+    <a-radio :style="radioStyle" :value="3">Option C</a-radio>
+    <a-radio :style="radioStyle" :value="4">
+      More...
+      <a-input v-if="value === 4" style="width: 100px; margin-left: 10px" />
+    </a-radio>
+  </a-radio-group>
     <li><input type="radio">線上刷卡【 宅配到府 】</li>
     <li><input type="radio">全家【 取貨付款 】</li>
     <li><input type="radio">7-11【 取貨付款 】</li>
@@ -27,10 +32,19 @@ export default {
     </ul>
     <h1>③填寫訂購資料</h1>
     <form class="order">
-      取貨人姓名<input class="order-text" type="text">
-      電子郵件<input class="order-text" type="email">
-      寄送地址<input class="order-text" type="text">
-      <button class="button">確認</button>
+       取貨人姓名<a-space direction="vertical">
+    <a-input v-model:value="value" placeholder="name" />
+  </a-space>
+      電子郵件<a-space direction="vertical">
+    <a-input v-model:value="value" placeholder="e-mail" />
+  </a-space>
+      寄送地址<a-space direction="vertical">
+    <a-input v-model:value="value" placeholder="address" />
+  </a-space>
+
+   <a-space wrap>
+    <a-button type="primary">確認OK</a-button>
+  </a-space>
     </form>
   </div>
 </niu-layout>

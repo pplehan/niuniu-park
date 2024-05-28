@@ -1,132 +1,152 @@
 <script setup>
 import NiuLayout from '@/components/NiuLayout.vue';
-import {ref} from 'vue';
-const cowList = ref([
+import { ref } from 'vue';
+import { homeApi } from '@/api/module/home'
+import { onMounted } from 'vue';
+
+const carouselImg = ref([
   {
     id: 1,
-    title: '臺灣黃牛(Taiwan Yellow Cattle)',
-    image: 'https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-35688-i.jpg',
+    Image: "https://p1-q.mafengwo.net/s10/M00/D2/0F/wKgBZ1nEoEWABQVPAAEzJML1_gw57.jpeg?imageView2%2F2%2Fw%2F680%2Fq%2F90"
   },
   {
     id: 2,
-    title: '荷蘭(Holstein)',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoISnvVwMrU_5_QmTVkxFwQYqNOa5QSbev_gV9jzIuKQ&s',
+    Image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.parenting.com.tw%2Farticle%2F5070345&psig=AOvVaw2seUAGvJeumTgKtONJo7-a&ust=1716816009610000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKDg65e0q4YDFQAAAAAdAAAAABAE"
   },
   {
     id: 3,
-    title: '聖達(Santa Gertrudis)',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Santa_Gertrudis_bull.JPG/640px-Santa_Gertrudis_bull.JPG',
+    Image: "https://i.ytimg.com/vi/1tX0z1jySQo/maxresdefault.jpg"
   },
   {
     id: 4,
-    title: '布拉曼(Brahman)',
-    image: 'https://www.angrin.tlri.gov.tw/cow/CowType/brahman1.jpg',
-  },
-  {
-    id: 5,
-    title: '夏洛利(Charolais)',
-    image: 'https://media.istockphoto.com/id/184925350/zh/%E7%85%A7%E7%89%87/white-cow.jpg?s=612x612&w=0&k=20&c=u6BXpdV7XAT8qVSBEb0PDGXpalsDwxuh1yNXFJa3JOM=',
-  },
-  {
-    id: 6,
-    title: '水 牛',
-    image: 'https://pic.pimg.tw/jhy212jhy/1508671075-3373181057_wn.jpg',
-  },
+    Image: "https://hoshinoresorts.com/wpadmin2022/wp-content/uploads/2022/08/0c6264bcef555c4d418ad5d08010623f-1200x801.jpg"
+  }
 ])
 
-const milkList = ref([
-  {
-    id: 1,
-    title: '高優質鮮乳',
-    image: 'https://cdn.cybassets.com/media/W1siZiIsIjIxMjc0L3Byb2R1Y3RzLzM2NjI0MTkyLzE2NDk0MDMxNjJfMTQzMmNiMTk0YTA3YTMxOTY0MjAuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=444028f8a2f3410e'
-  },
-  {
-    id: 2,
-    title: '原味優酪乳',
-    image: 'https://static.owlting.com/market/public/items/thumbs/640x480/item_15880_26e5e646035e9acafa6df117221a8bf8'
-  },
-  {
-    id: 3,
-    title: '綜合莓果優酪乳',
-    image: 'https://golden-goods.com/wp-content/uploads/2022/12/638070215896870000.jpg'
-  },
-  {
-    id: 4,
-    title: '原味優格',
-    image: 'https://online.carrefour.com.tw/on/demandware.static/-/Sites-carrefour-tw-m-inner/default/dwd672f0c7/images/large/1500302100101.jpg'
-  },
-  {
-    id: 5,
-    title: '柚香優格',
-    image: 'https://online.carrefour.com.tw/on/demandware.static/-/Sites-carrefour-tw-m-inner/default/dw23b1ecc9/images/large/1500301200101.jpg'
-  },
-  {
-    id: 6,
-    title: '無糖優格 (無添加蔗糖)',
-    image: 'https://good.icook.tw/wp-content/uploads/2022/08/%E5%84%AA%E6%A0%BC%E6%8E%A8%E8%96%A6%EF%BC%BF%E7%94%A2%E5%93%81%E4%BB%8B%E7%B4%B906%EF%BC%BF%E3%80%90%E5%85%89%E6%B3%89%E3%80%91%E9%A0%82%E7%B4%9A%E9%AE%AE%E5%A5%B6%E5%84%AA%E9%85%AA-1.jpg'
-  },
-])
+
+
+
+
 </script>
+
 <template>
 <niu-layout>
-  <h2 class="cow-title">認識牧場牛</h2>
-<div class="flex flex-wrap">
-  <a-card v-for="item in cowList" :key="item.id" hoverable style="width: 240px">
-    <template #cover>
-      <img class="h-72 object-fit" alt="example" :src="item.image" />
-    </template>
-    <a-card-meta :title="item.title">
-      <template #description>{{ item.desc }}</template>
-    </a-card-meta>
-  </a-card>
+  <a-carousel :after-change="onChange">
+    <div><h3><img src="" alt=""></h3></div>
+    <div><h3>2</h3></div>
+    <div><h3>3</h3></div>
+    <div><h3>4</h3></div>
+  </a-carousel>
+
+<div class="about">
+  <h1>關於niuniu-park</h1>
+  <h1>About us</h1>
+<div class="business">
+  <span class="idea">經營理念</span>
 </div>
-<h2 class="product-title">產品介紹</h2>
-<div class="flex flex-wrap">
- <a-card v-for="item in milkList" :key="item.id" hoverable style="width: 240px">
-    <template #cover>
-      <img class="h-64 object-fit" alt="example" :src="item.image" />
-    </template>
-    <a-card-meta :title="item.title"/>
-  </a-card>
+  <div class="content">
+    <div class="content-p">
+      <div class="content-p-l-1"></div>
+      <div class="content-p-r">
+        <h2>niuniu-park由來</h2>
+        <p>先扭一下，再扭一下，想像它是個公園</p>
+      </div>
+    </div>
+    <div class="content-p">
+      <div class="content-p-l-2"></div>
+      <div class="content-p-r">
+        <h2>顏色意象</h2>
+        <p>niuniu-park標準色是以藍、白、綠依一定的比例調和而成的niuniu綠。</p>
+      </div>
+    </div>
+    <div class="content-p">
+      <div class="content-p-l-3"></div>
+      <div class="content-p-r">
+        <h2>牧場使命</h2>
+        <p>透過三生(生活、生產、生態)一體與三育(培育、保（復）育、教育 )並重的發展策略，永續經營寓教於樂的休閒事業，提供客人身、心、靈全方位的休閒體驗。</p>
+      </div>
+    </div>
+
   </div>
+
+</div>
+
+
+
 </niu-layout>
 </template>
 
 <style scoped>
 
 
-.cow, .product {
+
+
+.about {
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
+  height: 100%;
+  font-size: 20px;
+  color: black;
 }
 
-.cow-title, .product-title {
-  text-align: center;
-  font-size: 28px;
-  font-weight: bolder;
-}
-
-
-
-.cow > div,.product > div {
+.business {
+  width: 100%;
   position: relative;
-  height: 300px;
-  width: 500px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0px -44px;
+
 }
-.cow-content, .product-content{
-  width: 500px;
-  position: absolute;
-  height: 48px;
-  bottom: 0;
-  text-align: center;
-  font-size: 32px;
-  background-color: white;
+
+  .idea {
+    position: absolute;
+    left: 5%;
+  
+  }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
+
+.content-p {
+  width: 100%;
+  display: flex;
+  align-items: center;
+ 
+}
+
+
+.content-p-l-1, .content-p-l-2, .content-p-l-3, .content-p-r {
+  width: 600px;
+  height: 400px; 
+  margin-bottom: 20px;
+  margin-left: 40px;
+}
+
+.content-p-l-1 {
+  background-image: url(https://img.pikbest.com/wp/202345/cow-an-image-of-a-group-cows-in-field_9584541.jpg!w700wp);
+}
+
+.content-p-l-2 {
+  background-image: url(https://1.bp.blogspot.com/-lxsoh7O5dHA/YSO9BUcSu_I/AAAAAAAAGVs/jF-sr_1rDqIVTfXiqVYtiyzjE7wKE-2OACLcBGAsYHQ/s0/P1100115-3.jpg);
+  background-size: Cover ; 
+}
+
+.content-p-l-3 {
+  background-image: url(https://cdn.hk01.com/di/media/images/2590811/org/4456bb1c7f2d0096437181981137c9ef.jpg/KcHXY_I2YafgIupBIeRuvjkiQnwR8dN53Be6ydwXusk?v=w1920);
+  background-size: Cover ; 
+}
+
+.content-p-r {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+
 
 
 </style>

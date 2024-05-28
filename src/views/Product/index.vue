@@ -1,10 +1,5 @@
-<script>
+<script setup>
 import NiuLayout from '@/components/NiuLayout.vue'
-export default {
-  components: {
-    NiuLayout,
-  },
-};
 </script>
 <template>
 <niu-layout>

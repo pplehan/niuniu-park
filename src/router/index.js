@@ -20,15 +20,29 @@ const router = createRouter({
       component: import('@/views/Cart/index.vue')
     },
     {
-      path: '/cow',
+      path: '/cow/:id',
       name: 'cow',
       component: import('@/views/Cow/index.vue')
     },
     {
-      path: '/product',
+      path: '/product/:id',
       name: 'product',
       component: import('@/views/Product/index.vue')
     },
+    {
+      path: '/knowproducts',
+      name: 'knowproducts',
+      component: import('@/views/KnowProducts/index.vue')
+    },
+    {
+      path: '/knowcows',
+      name: 'knowcows',
+      component: import('@/views/KnowCows/index.vue')
+    }
+    
+
+
+
   ]
 })
 
