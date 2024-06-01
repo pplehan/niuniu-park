@@ -1,6 +1,6 @@
 <template>
-  <div class="footer">
-    <img class="footer-logo" :src="footerImg" alt="logo">
+  <div class="footer bg-headerColor px-5 flex justify-between items-center py-5">
+    <img class="w-60" :src="footerImg" alt="logo">
     <div class="contact">
       <ul class="contact-inform">
         <li>地址 | 94441屏東縣車城鄉福興村中山路53號 </li>
@@ -26,17 +26,4 @@
 import footerImg from '@/assets/image/002.png';
 </script>
 
-<style >
-  .footer {
-  font-size: 20px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  color: #333333;
-  background-color: #EED3D9;
-  flex-shrink: 0;
-}
-.footer-logo {
-  width: 400px;
-}
-</style>
+<style scope></style>

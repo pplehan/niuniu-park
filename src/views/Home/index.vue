@@ -3,23 +3,24 @@ import NiuLayout from '@/components/NiuLayout.vue';
 import { ref } from 'vue';
 import { homeApi } from '@/api/module/home'
 import { onMounted } from 'vue';
-
+// import { LeftCircleOutlined, RightCircleOutlined } from '@ant-design/icons-vue';
+// <LeftOutlined />
 const carouselImg = ref([
   {
     id: 1,
-    Image: "https://p1-q.mafengwo.net/s10/M00/D2/0F/wKgBZ1nEoEWABQVPAAEzJML1_gw57.jpeg?imageView2%2F2%2Fw%2F680%2Fq%2F90"
+    image: "https://img.shoplineapp.com/media/image_clips/65703906b68e7f0023544f54/original.jpg?1701853446"
   },
   {
     id: 2,
-    Image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.parenting.com.tw%2Farticle%2F5070345&psig=AOvVaw2seUAGvJeumTgKtONJo7-a&ust=1716816009610000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKDg65e0q4YDFQAAAAAdAAAAABAE"
+    image: "https://www.penghutimes.com/FileUploads/ArticlePhoto/20230226093140284.jpg"
   },
   {
     id: 3,
-    Image: "https://i.ytimg.com/vi/1tX0z1jySQo/maxresdefault.jpg"
+    image: "https://img.ltn.com.tw/Upload/news/600/2023/06/29/4348677_1_1.jpg"
   },
   {
     id: 4,
-    Image: "https://hoshinoresorts.com/wpadmin2022/wp-content/uploads/2022/08/0c6264bcef555c4d418ad5d08010623f-1200x801.jpg"
+    image: "https://hoshinoresorts.com/wpadmin2022/wp-content/uploads/2022/08/0c6264bcef555c4d418ad5d08010623f-1200x801.jpg"
   }
 ])
 
@@ -31,14 +32,22 @@ const carouselImg = ref([
 
 <template>
 <niu-layout>
-  <a-carousel :after-change="onChange">
-    <div><h3><img src="" alt=""></h3></div>
-    <div><h3>2</h3></div>
-    <div><h3>3</h3></div>
-    <div><h3>4</h3></div>
+<a-carousel autoplay arrows>
+   <template #prevArrow>
+      <div class="custom-slick-arrow" style="left: 10px; z-index: 1">
+        <left-circle-outlined />
+      </div>
+    </template>
+    <template #nextArrow>
+      <div class="custom-slick-arrow" style="right: 10px">
+        <right-circle-outlined />
+      </div>
+    </template>
+    <div v-for="item in carouselImg" :key="item.id">
+      <img class="h-[360px] w-full object-cover " :src="item.image" alt="">
+      </div>
   </a-carousel>
 
-<div class="about">
   <h1>關於niuniu-park</h1>
   <h1>About us</h1>
 <div class="business">
@@ -69,7 +78,6 @@ const carouselImg = ref([
 
   </div>
 
-</div>
 
 
 
@@ -77,53 +85,38 @@ const carouselImg = ref([
 </template>
 
 <style scoped>
-
-
-
-
-.about {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  font-size: 20px;
-  color: black;
+:deep(.slick-slide h3) {
+  color: #fff
 }
 
-.business {
-  width: 100%;
-  position: relative;
+/* 
+:deep(.slick-slide) {
+  text-align: center;
+  background: #364d79;
+  overflow: hidden;
+} */
 
+:deep(.slick-arrow.custom-slick-arrow) {
+  width: 25px;
+  height: 25px;
+  font-size: 25px;
+  color: #fff;
+  background-color: rgba(31, 45, 61, 0.11);
+  transition: ease all 0.3s;
+  opacity: 0.3;
+  z-index: 1;
 }
 
-  .idea {
-    position: absolute;
-    left: 5%;
-  
-  }
-
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
+:deep(.slick-arrrow.custom-slick-arrow:before){
+  display: none;
 }
 
-.content-p {
-  width: 100%;
-  display: flex;
-  align-items: center;
- 
+:deep(.slick-arrrow.custom-slick-arrow:hover){
+  color:#fff;
+  opacity: 0.5;
 }
 
 
-.content-p-l-1, .content-p-l-2, .content-p-l-3, .content-p-r {
-  width: 600px;
-  height: 400px; 
-  margin-bottom: 20px;
-  margin-left: 40px;
-}
 
 .content-p-l-1 {
   background-image: url(https://img.pikbest.com/wp/202345/cow-an-image-of-a-group-cows-in-field_9584541.jpg!w700wp);
@@ -135,10 +128,9 @@ const carouselImg = ref([
 }
 
 .content-p-l-3 {
-  background-image: url(https://cdn.hk01.com/di/media/images/2590811/org/4456bb1c7f2d0096437181981137c9ef.jpg/KcHXY_I2YafgIupBIeRuvjkiQnwR8dN53Be6ydwXusk?v=w1920);
+  background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulemilk.com%2Fblog%2Fposts%2Fdairy-log-10&psig=AOvVaw1yA0ayo1CpTIB0x6RxpU7a&ust=1717255320420000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJjOoOCYuIYDFQAAAAAdAAAAABAE);
   background-size: Cover ; 
 }
-
 .content-p-r {
   display: flex;
   flex-direction: column;
