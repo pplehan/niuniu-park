@@ -3,12 +3,12 @@ import NiuLayout from '@/components/NiuLayout.vue'
 </script>
 <template>
   <niu-layout>
-    <div class="main-inform">
-      <h2>註冊 / 登入</h2>
-    <span>請輸入手機號碼</span>
-    <a-input v-model:value="userName" placeholder="PhoneNumber">
+    <div class="container mx-auto w-1/5 ">
+      <h2 class="text-center mt-40 mb-10 text-4xl">註冊 / 登入</h2>
+    <span class="text-2xl ">請輸入手機號碼</span>
+    <a-input size="large" v-model:value="userName" placeholder="PhoneNumber">
       <template #prefix>
-        <user-outlined />
+        <user-outlined /> 
       </template>
       <template #suffix>
         <a-tooltip title="Extra information">
@@ -17,7 +17,7 @@ import NiuLayout from '@/components/NiuLayout.vue'
       </template>
     </a-input>
 <a-space wrap>
-    <a-button type="primary">傳送認證碼</a-button>
+    <a-button class=" mb-20 mt-5 " size="large" type="primary">傳送認證碼</a-button>
   </a-space>
     </div>
   </niu-layout>
@@ -25,7 +25,7 @@ import NiuLayout from '@/components/NiuLayout.vue'
 
 <style scoped>
 
-.main-inform {
+/* .main-inform {
   width: 500px;
   height: 720px;
   display: flex;
@@ -73,6 +73,6 @@ h2 {
   color: #FFFFFF;
 }
 
-
+ */
 
 </style>

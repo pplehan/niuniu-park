@@ -3,6 +3,7 @@ import NiuLayout from '@/components/NiuLayout.vue';
 import { ref } from 'vue';
 import { homeApi } from '@/api/module/home'
 import { onMounted } from 'vue';
+import { setToCart, getCart } from '@/utils/localStorage'
 
 const milkList = ref ([])
 
@@ -10,6 +11,30 @@ const getMilksData = async() => {
   const { data } = await homeApi.getMilks()
   milkList.value = data
 }
+
+const addToCart = (item) =>{
+  let cart = getCart() || []
+  if (!cart.length) {
+    cart.push(item)
+    setToCart(cart)
+    return
+  }
+  const isProductExist = cart.some(product => product.id === item.id)
+  if (isProductExist) {
+    const products = cart.map(product => {
+      if(product.id === item.id) {
+      product = item
+      return product
+    }
+    return product
+  })
+  setToCart(products)
+  } else {
+  const products = [...cart, item ]
+  setToCart(products)
+  }
+}
+
 
 
 onMounted(() => {
@@ -25,14 +50,16 @@ onMounted(() => {
     <h2 class="product-title mb-3">產品介紹</h2>
     <div class="flex flex-wrap -mx-4">
       <div class="flex-none md:w-1/3 sm:w-2/4 px-20 mb-10" v-for="item in milkList" :key="item.id" hoverable>
-      <a-card >
+      <a-card :title="item.title">
         <template #cover>
           <img class="h-72 object-fit" alt="example" :src="item.image" />
         </template>
-        <a-card-meta :title="item.title">
-        <template #description>{{ item.desc }}</template>
-      </a-card-meta>
-      </a-card>
+          <a-card-meta :title="item.title"> <template #description>{{ item.desc }}</template></a-card-meta>
+        <template #actions>
+          <a-input-number v-model:value="item.amount" />
+          <a-button type="primary" @click="addToCart(item)">加入購物車</a-button>
+      </template>
+</a-card>
       </div>
     </div>
     </section>

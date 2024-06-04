@@ -1,6 +1,6 @@
 <template>
   <div class="footer bg-headerColor px-5 flex justify-between items-center py-5">
-    <img class="w-60" :src="footerImg" alt="logo">
+    <img class="w-80" :src="footerImg" alt="logo">
     <div class="contact">
       <ul class="contact-inform">
         <li>地址 | 94441屏東縣車城鄉福興村中山路53號 </li>

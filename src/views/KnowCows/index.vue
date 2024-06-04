@@ -24,7 +24,7 @@ onMounted(() => {
   <section class="container mx-auto">
     <h2 class="cow-title mb-3">認識牧場牛</h2>
     <div class="flex flex-wrap -mx-4">
-      <div class="flex-none md:w-1/3 sm:w-2/4 px-4 mb-4" v-for="item in cowList" :key="item.id" hoverable>
+      <div class="flex-none md:w-1/3 sm:w-2/4 px-4 mb-10" v-for="item in cowList" :key="item.id" hoverable>
   <a-card >
     <template #cover>
       <img class="h-72 object-fit" alt="example" :src="item.image" />
