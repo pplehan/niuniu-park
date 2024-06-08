@@ -1,4 +1,6 @@
 {
+  "login_success": "登入成功",
   "knowCows": "認識牧場牛",
-  "ProductsIntro": "產品介紹"
+  "ProductsIntro": "產品介紹",
+  "message_verifyCode": "請輸入有效的驗證碼"
 }

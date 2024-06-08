@@ -22,28 +22,16 @@
           {{ record.product }}
       </template>
       <template v-if="column.key === 'amount'">
-          {{ record.price }}
-      </template>
-      <template v-if="column.key === 'name'">
           {{ record.amount}}
       </template>
+      <template v-if="column.key === 'price'">
+          {{ record.price }}
+      </template>
       <template v-if="column.key === 'total'">
-          {{ record.price*record.amount}}
+          {{ record.price * record.amount}}
       </template>
       <template v-if="column.key === 'action'">
-    <a-button type="primary" danger ghost>移除</a-button>
-      </template>
-      <template v-if="column.key === 'action'">
-        <span>
-          <a>Invite 一 {{ record.name }}</a>
-          <a-divider type="vertical" />
-          <a>Delete</a>
-          <a-divider type="vertical" />
-          <a class="ant-dropdown-link">
-            More actions
-            <down-outlined />
-          </a>
-        </span>
+    <a-button @clicks="removeFromCart(record.id)" type="primary" danger ghost>移除</a-button>
       </template>
     </template>
   </a-table>
@@ -73,46 +61,52 @@
 </template>
 <script setup>
 import NiuLayout from '@/components/NiuLayout.vue'
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
+import { getCart, setToCart } from '@/utils/localStorage';
+const cart = ref (getCart())
 const formState = reactive({
   name:'',
   email:'',
   address:''
 })
-const tableColumns = ref([
-  {
-    name:'商品資料',
-    key: 'product'
-  },
-  {
-    name:'單件價格',
-    key: 'price'
-  },
-  {
-    name:'數量',
-    key: 'amount'
-  },
-  {
-    name:'小計',
-    key: 'total'
-  },
-  {
-    name:'操作',
-    key: 'action'
-  }
-])
-const tableData = ref([
-  {
-    product: '牛奶',
-    price: 100,
-    amount: 1,
-  },
-  {
-    product: '優酪乳',
-    price: 100,
-    amount: 1,
-  },
-])
+  const tableColumns = ref([
+    {
+      name:'商品資料',
+      key: 'product'
+    },
+    {
+      name:'單件價格',
+      key: 'price'
+    },
+    {
+      name:'數量',
+      key: 'amount'
+    },
+    {
+      name:'小計',
+      key: 'total'
+    },
+    {
+      name:'操作',
+      key: 'action'
+    }
+  ])
+const tableData = computed(() => {
+ return cart.value.map(product => ({
+    id: product.id,
+    product: product.title,
+    price: product.price,
+    amount: product.amount
+  }))
+})
+
+
+const removeFromCart = (id) => {
+  const newCart = cart.value.filter(product => product.id !== id)
+  setToCart(newCart)
+  cart.value = newCart
+}
+
 </script>
 <style scoped>
 

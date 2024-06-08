@@ -31,7 +31,7 @@
     <template #overlay>
       <a-menu>
         <a-menu-item v-for="item in translateButton" :key="item.key">
-            <a-button block>{{ item.title }}</a-button>
+            <a-button block @click="changeLanguage(item.key)">{{ item.title }}</a-button>
         </a-menu-item>
         <a-menu-divider/>
       </a-menu>
@@ -49,8 +49,13 @@ import { useRouter } from 'vue-router'
 import { UserOutlined, ShoppingCartOutlined, GlobalOutlined, LogoutOutlined } from '@ant-design/icons-vue';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import {setLang} from '@/utils/localStorage'; 
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+const changeLanguage = (lang) => {
+  locale.value = lang
+  setLang(lang)
+}
 const translateButton = ref([
   {
     key:'zh-TW',

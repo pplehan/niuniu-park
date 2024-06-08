@@ -1,8 +1,8 @@
-import sever from '../sever'
+import server from '../server'
 
 export const userApi = {
-  login: async() =>{
-    const data = await sever.post('/login')
-    console.log(data);
+  login: async(verifyCode) =>{
+    const data = await server.post('/login', { verifyCode })
+    return data.data
   }
 }

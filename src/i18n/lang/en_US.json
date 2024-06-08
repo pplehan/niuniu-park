@@ -1,4 +1,6 @@
 {
+  "login_success": "Login_successfully",
   "knowCows": "Know our cows",
-  "ProductsIntro": "Products"
+  "ProductsIntro": "Products",
+  "message_verifyCode": "Please enter valid code"
 }

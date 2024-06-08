@@ -23,7 +23,7 @@ const addToCart = (item) =>{
   if (isProductExist) {
     const products = cart.map(product => {
       if(product.id === item.id) {
-      product = item
+      product.amount++
       return product
     }
     return product
@@ -54,7 +54,11 @@ onMounted(() => {
         <template #cover>
           <img class="h-72 object-fit" alt="example" :src="item.image" />
         </template>
-          <a-card-meta :title="item.title"> <template #description>{{ item.desc }}</template></a-card-meta>
+          <a-card-meta :title="item.title"> 
+            <template #description>
+              <p class="whitespace-nowrap overflow-hidden text-ellipsis"> {{ item.desc }}</p>
+             </template>
+             </a-card-meta>
         <template #actions>
           <a-input-number v-model:value="item.amount" />
           <a-button type="primary" @click="addToCart(item)">加入購物車</a-button>
