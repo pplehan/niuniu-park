@@ -4,6 +4,7 @@ import { ref } from 'vue';
 import { homeApi } from '@/api/module/home'
 import { onMounted } from 'vue';
 import { setToCart, getCart } from '@/utils/localStorage'
+import { message } from 'ant-design-vue';
 
 const milkList = ref ([])
 
@@ -17,6 +18,7 @@ const addToCart = (item) =>{
   if (!cart.length) {
     cart.push(item)
     setToCart(cart)
+    message.success('成功加入購物車')
     return
   }
   const isProductExist = cart.some(product => product.id === item.id)
@@ -33,6 +35,7 @@ const addToCart = (item) =>{
   const products = [...cart, item ]
   setToCart(products)
   }
+  message.success('成功加入購物車')
 }
 
 

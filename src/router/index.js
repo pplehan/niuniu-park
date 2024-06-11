@@ -35,6 +35,11 @@ const router = createRouter({
       component: ()=>import('@/views/KnowCows/index.vue')
     },
     {
+      path: '/checkout',
+      name: 'checkout',
+      component: ()=>import('@/views/Checkout/index.vue')
+    },
+    {
       path: '/:pathMatch(.*)',
       name: 'notFound',
       component: ()=>import('@/views/NotFound/index.vue')

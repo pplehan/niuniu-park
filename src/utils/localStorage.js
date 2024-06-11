@@ -3,7 +3,7 @@ export const setToCart = (product) =>{
 }
 
 export const getCart = () => {
-  return JSON.parse(localStorage.getItem('Niu-cart'))
+  return JSON.parse(localStorage.getItem('Niu-cart')) || []
 }
 
 export const setToken =  (token) =>{
