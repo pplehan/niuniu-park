@@ -1,3 +1,5 @@
+// Home/index.vue
+
 <script setup></script>
 
 <template>
